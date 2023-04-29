@@ -6,7 +6,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Models\Parking;
 use App\Models\Vehicle;
+use App\Observers\ParkingObserver;
 use App\Observers\VehicleObserver;
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Vehicle::observe(VehicleObserver::class);
+        Parking::observe(ParkingObserver::class);
 
     }
 

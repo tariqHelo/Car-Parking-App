@@ -16,8 +16,12 @@ class VehicleController extends Controller
     }
  
     public function store(StoreVehicleRequest $request)
-    {
-        $vehicle = Vehicle::create($request->validated());
+    {   
+
+       // dd($request->all(), auth()->user()->id);
+        $vehicle = Vehicle::create($request->validated() + [
+            'user_id'=> auth()->user()->id
+        ]);
  
         return VehicleResource::make($vehicle);
     }

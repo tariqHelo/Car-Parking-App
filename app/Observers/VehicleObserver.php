@@ -13,7 +13,7 @@ class VehicleObserver
     {
         
         if (auth()->check()) {
-            $vehicle->user_id = auth()->id();
+            $vehicle->user_id = auth()->user()->id;
         }
     }
 
